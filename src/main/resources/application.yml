@@ -1,0 +1,25 @@
+server:
+    servlet:
+        context-path: /demo
+    port: 8787
+spring:
+    thymeleaf:
+        prefix: classpath:/templates/
+        suffix: .html
+        encoding: UTF-8
+        mode: HTML5
+    mvc:
+        hiddenmethod:
+            filter:
+                enabled: true
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/spring_demo
+        username: test
+        password: password
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+                '[format_sql]': true
+        show-sql: true
