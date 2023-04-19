@@ -18,12 +18,19 @@ public class UserController {
         this.userService = userService;
     }
 
+    // getmapping for user by email with query param
+    @GetMapping("/find")
+    @ResponseBody
+    public User getUserByEmail(String email) throws Exception {
+        return userService.findUserByEmail(email).orElseThrow(
+                () -> new Exception("User with email: " + email + " not found"));
+    }
+
     @GetMapping("/{id}")
     @ResponseBody
     public User getUserById(@PathVariable(name = "id") int id) throws Exception {
         return userService.findUserById(id).orElseThrow(
-            () -> new Exception("User with ID: " + id + " not found")
-        );
+                () -> new Exception("User with ID: " + id + " not found"));
     }
-    
+
 }

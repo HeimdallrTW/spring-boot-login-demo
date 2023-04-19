@@ -15,6 +15,11 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
+    // find optional user by email
+    public Optional<User> findUserByEmail(String email) {
+        return Optional.ofNullable(userRepo.findByEmail(email));
+    }
+
     public Optional<User> findUserById(int id) {
         return userRepo.findById(id);
     }
