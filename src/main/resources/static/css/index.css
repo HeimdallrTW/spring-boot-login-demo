@@ -1,0 +1,9 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* root variable */
+:root {
+    --main-title-color: #3cb371;
+}
