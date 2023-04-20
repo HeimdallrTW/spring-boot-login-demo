@@ -10,16 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.kent.logindemo.model.bean.User;
+
 @WebFilter(urlPatterns = {"/", "/index"})
-public class LogProcessTimeFilter extends OncePerRequestFilter {
+public class LoginAuthFilter extends OncePerRequestFilter {
+    private static final String LOGIN_URL = "/login";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        long startTime = System.currentTimeMillis();
+        // get user from session
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            response.sendRedirect(LOGIN_URL);
+            return;
+        }
         filterChain.doFilter(request, response);
-        long processTime = System.currentTimeMillis() - startTime;
-        System.out.println(processTime + " ms");
     }
-
+    
 }

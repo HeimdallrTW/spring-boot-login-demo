@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW" xmlns:th="http://www.thymeleaf.org">
-    <!-- <head th:replace="~{components/head :: head}"> -->
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,6 +7,7 @@
         <th:block th:replace="~{components/head :: title}"></th:block>
         <th:block th:replace="~{components/head :: plugin}"></th:block>
         <link rel="stylesheet" th:href="@{/css/index.css}">
+        <link rel="stylesheet" th:href="@{/css/header.css}">
         <style>
             .title-color {
                 color: var(--main-title-color)
@@ -15,6 +15,11 @@
         </style>
     </head>
     <body>
-        <h1 class="text-center mt-5 title-color">Hello, World!</h1>
+        <header th:replace="~{components/header :: header}"></header>
+        <main>
+            <div class="container">
+                <h1 class="text-center mt-5 title-color">Hello, World!</h1>
+            </div>
+        </main>
     </body>
 </html>
