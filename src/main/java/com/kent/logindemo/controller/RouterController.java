@@ -16,4 +16,9 @@ public class RouterController {
         return "/user/login";
     }
 
+    @GetMapping(path = "/register")
+    public String register() {
+        return "/user/register";
+    }
+
 }

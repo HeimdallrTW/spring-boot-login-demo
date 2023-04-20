@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -72,7 +73,7 @@ public class User {
     private Date modifiedAt;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "user", cascade =  CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade =  CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private UserDetail userDetail;
 
     public User() {
