@@ -48,8 +48,11 @@ public class User {
     @Column(name = "is_admin", columnDefinition = "BIT")
     private boolean isAdmin;
 
-    @Column(name = "is_verified", columnDefinition = "BIT")
-    private boolean isVerified;
+    @Column(name = "is_enabled", columnDefinition = "BIT")
+    private boolean isEnabled;
+
+    @Column(name = "verification_code", columnDefinition = "CHAR")
+    private String verificationCode;
 
     @Column(name = "is_blocked", columnDefinition = "BIT")
     private boolean isblocked;
@@ -127,12 +130,20 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public boolean isVerified() {
-        return isVerified;
+    public boolean isEnabled() {
+        return isEnabled;
     }
 
-    public void setVerified(boolean isVerified) {
-        this.isVerified = isVerified;
+    public void setEnabled(boolean isEnabled) {
+        this.isEnabled = isEnabled;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 
     public boolean isIsblocked() {

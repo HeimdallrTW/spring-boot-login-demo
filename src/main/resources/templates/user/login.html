@@ -27,57 +27,75 @@
     </style>
 </head>
 
-
-<main>
-    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-5">
-            <div class="col-lg-6 text-center text-lg-start">
-                <h1 class="display-4 fw-bold lh-1 text-body-emphasis text-main-title mb-3">Hello, World!</h1>
-                <p class="col-lg-10 fs-4">Spring Boot Login Demo.</p>
-            </div>
-            <div class="col-md-10 mx-auto col-lg-6">
-                <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" id="login" th:action="@{/user/login}"
-                    method="post" autocomplete="off">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
-                        <label for="email">Email address</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="password" id="password"
-                            placeholder="Password">
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    <hr class="my-4">
-                    <div class="mb-3">
-                        <small class="text-body-secondary">
-                            Don't have an account? <a th:href="@{/register}">Sign up</a>
-                        </small>
-                    </div>
-                    <div>
-                        <button class="btn btn-danger btn-sm" type="button" id="admin">Admin</button>
-                        <button class="btn btn-success btn-sm" type="button" id="emily">Emily</button>
-                    </div>
-                </form>
+<body>
+    <main>
+        <div class="container h-100 col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold lh-1 text-main-title mb-3">Hello, World!</h1>
+                    <p class="col-lg-10 fs-4">Spring boot login demo.</p>
+                </div>
+                <div class="col-md-10 mx-auto col-lg-6">
+                    <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" id="login" th:action="@{/user/login}"
+                        method="post" autocomplete="off">
+                        <th:block th:if="${emailOrPasswordError != null}">
+                            <div class="mb-2 alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong th:text="${emailOrPasswordError}"></strong> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </th:block>
+                        <th:block th:if="${accountIsNotEnable != null}">
+                            <div class="mb-2 alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong th:text="${accountIsNotEnable}"></strong> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </th:block>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="email" id="email"
+                                placeholder="name@example.com">
+                            <label for="email">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                        <hr class="my-4">
+                        <div class="mb-3">
+                            <small class="text-body-secondary">
+                                Don't have an account? <a th:href="@{/register}">Sign up</a>
+                            </small>
+                        </div>
+                        <div>
+                            <button class="btn btn-danger btn-sm" type="button" id="admin">Admin</button>
+                            <button class="btn btn-success btn-sm" type="button" id="emily">Emily</button>
+                            <button class="btn btn-primary btn-sm" type="button" id="kent">Kent</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
-<script>
-    document.querySelector('#admin').addEventListener('click', function () {
-        document.querySelector('#email').value = 'Admin@gmail.com';
-        document.querySelector('#password').value = 'Passw0rd!';
-    });
-    document.querySelector('#emily').addEventListener('click', function () {
-        document.querySelector('#email').value = 'Emily@gmail.com';
-        document.querySelector('#password').value = 'Passw0rd!';
-    });
-</script>
+    </main>
+    <script>
+        document.querySelector('#admin').addEventListener('click', function () {
+            document.querySelector('#email').value = 'Admin@gmail.com';
+            document.querySelector('#password').value = 'Passw0rd!';
+        });
+        document.querySelector('#emily').addEventListener('click', function () {
+            document.querySelector('#email').value = 'Emily@gmail.com';
+            document.querySelector('#password').value = 'Passw0rd!';
+        });
+        document.querySelector('#kent').addEventListener('click', function () {
+            document.querySelector('#email').value = 'kent.ispan.java@gmail.com';
+            document.querySelector('#password').value = 'Passw0rd!';
+        });
+    </script>
 </body>
 
 </html>
